@@ -11,28 +11,30 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
 
-    private Rigidbody2D body;
+    private Rigidbody2D playerBody;
+    public BoxCollider2D playerCollider;
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
-        body.freezeRotation = true;
+        playerBody = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
+        playerBody.freezeRotation = true;
     }
 
     private void Update()
     {
-        body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
+        playerBody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, playerBody.velocity.y);
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
-        if (body.velocity.y < 0)
+        if (playerBody.velocity.y < 0)
         {
-            body.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            playerBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (body.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        else if (playerBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            body.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            playerBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
 
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
         isGrounded = false;
     }
 
@@ -54,7 +56,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Fly()
     {
-        body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
     }
 
+    private bool GroundCheck()
+    {
+        isGrounded = Physics.Raycast(transform.position, -gameObject.transform.up, playerCollider.bounds.extents.y + 0.1f);
+        return isGrounded;
+    }
 }
