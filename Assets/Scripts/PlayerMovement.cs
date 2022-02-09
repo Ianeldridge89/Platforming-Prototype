@@ -9,10 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier;
     [SerializeField] private float lowJumpMultiplier;
 
+
+
     [SerializeField] private LayerMask platformLayerMask;
     private Rigidbody2D playerBody;
-    public BoxCollider2D playerCollider;
+    private BoxCollider2D playerCollider;
 
+    // collects the rigidbody and collider.
     private void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -20,11 +23,11 @@ public class PlayerMovement : MonoBehaviour
         playerBody.freezeRotation = true;        
     }
 
+    // changes the velocity and direction of the player.  
     private void Update()
     {
-        GroundCheck();
         playerBody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, playerBody.velocity.y);
-        if (Input.GetKey(KeyCode.Space) && GroundCheck())
+        if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             Jump();
         }
@@ -43,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
+
     }
 
     /*private void oncollisionenter2d(collision2d collision)
@@ -58,22 +62,30 @@ public class PlayerMovement : MonoBehaviour
         playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
     }
 
-    private bool GroundCheck()
+    private bool IsGrounded()
+    {
+        return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, .1f, platformLayerMask);
+    }
+
+
+    /*private bool GroundCheck()
     {
         RaycastHit2D raycastHit = Physics2D.Raycast(playerCollider.bounds.center, Vector2.down, playerCollider.bounds.extents.y + 0.01f, platformLayerMask);
         Color rayColor;
         if (raycastHit.collider != null)
         {
             rayColor = Color.green;
+            Debug.Log("hitting ground");
         }
         else
         {
             rayColor = Color.red;
+            Debug.Log("not hitting ground");
         }
-        Debug.DrawRay(playerCollider.bounds.center, Vector2.down * (playerCollider.bounds.extents.y + 0.01f));
+        Debug.DrawRay(playerCollider.bounds.center, Vector2.down * (playerCollider.bounds.extents.y + 0.1f));
         Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
-    }
+    }*/
 
 
     //Physics2D.Raycast(playerCollider.bounds.center, Vector2.down, playerCollider.bounds.extents.y + 0.01f);
