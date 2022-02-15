@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//use inhertiance to connect to combat class
-public class EnemyCombat : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
+    static public float movementSpeed;
     private BoxCollider2D enemyCollider;
     private Rigidbody2D enemyBody;
     static public int enemyDamage;
@@ -14,6 +13,17 @@ public class EnemyCombat : MonoBehaviour
     {
         enemyCollider = GetComponent<BoxCollider2D>();
         enemyBody = GetComponent<Rigidbody2D>();
-        enemyDamage = 10;
+        enemyBody.freezeRotation = true;
+        movementSpeed = 1.0f;
+    }
+
+    private void Update()
+    {
+        Move();
+    }
+
+    private void Move()
+    {
+        transform.Translate(Vector2.left * movementSpeed * Time.deltaTime);
     }
 }

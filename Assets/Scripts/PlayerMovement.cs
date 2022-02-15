@@ -46,16 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
-
     }
-
-    /*private void oncollisionenter2d(collision2d collision)
-    {
-        if(collision.gameobject.tag == "ground")
-        {
-            isgrounded = true;
-        }
-    }*/
 
     private void Fly()
     {
@@ -68,25 +59,4 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    /*private bool GroundCheck()
-    {
-        RaycastHit2D raycastHit = Physics2D.Raycast(playerCollider.bounds.center, Vector2.down, playerCollider.bounds.extents.y + 0.01f, platformLayerMask);
-        Color rayColor;
-        if (raycastHit.collider != null)
-        {
-            rayColor = Color.green;
-            Debug.Log("hitting ground");
-        }
-        else
-        {
-            rayColor = Color.red;
-            Debug.Log("not hitting ground");
-        }
-        Debug.DrawRay(playerCollider.bounds.center, Vector2.down * (playerCollider.bounds.extents.y + 0.1f));
-        Debug.Log(raycastHit.collider);
-        return raycastHit.collider != null;
-    }*/
-
-
-    //Physics2D.Raycast(playerCollider.bounds.center, Vector2.down, playerCollider.bounds.extents.y + 0.01f);
 }
