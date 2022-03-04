@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class PlatformMovement : MonoBehaviour
 {
     static public float movementSpeed;
-    private BoxCollider2D enemyCollider;
-    private Rigidbody2D enemyBody;
-    static public int enemyDamage;
     private Vector2 startingPosition;
     private bool isGoingLeft;
     private float walkingDistance;
 
     private void Start()
     {
-        enemyCollider = GetComponent<BoxCollider2D>();
-        enemyBody = GetComponent<Rigidbody2D>();
-        enemyBody.freezeRotation = true;
+
         movementSpeed = 1.5f;
         startingPosition = transform.position;
         isGoingLeft = true;
@@ -25,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        Patrol();
+        HorizontalMovement();
     }
 
     private void Position()
@@ -33,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("Position is: " + startingPosition);
     }
 
-    private void Patrol()
+    private void HorizontalMovement()
     {
         if (isGoingLeft == true)
         {

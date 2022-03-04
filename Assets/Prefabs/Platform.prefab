@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3315872452684630780}
   - component: {fileID: 4862017841443232003}
   - component: {fileID: 8547305446850430849}
-  - component: {fileID: 264981512}
+  - component: {fileID: 4923342440122018902}
   m_Layer: 3
   m_Name: Platform
   m_TagString: Ground
@@ -111,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &264981512
+--- !u!251 &4923342440122018902
 PlatformEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

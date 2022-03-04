@@ -16,4 +16,7 @@ public class EnemyCombat : MonoBehaviour
         enemyBody = GetComponent<Rigidbody2D>();
         enemyDamage = 10;
     }
+
+    // if the player enters the enemy's field of view,
+    //  the enemy shoots the player
 }
