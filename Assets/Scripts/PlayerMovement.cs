@@ -8,12 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private float lowJumpMultiplier;
-
-
-
     [SerializeField] private LayerMask platformLayerMask;
     private Rigidbody2D playerBody;
     private BoxCollider2D playerCollider;
+    private bool facingRight;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -26,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // changes the velocity and direction of the player.  
     private void Update()
     {
-        playerBody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, playerBody.velocity.y);
+        Move();        
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             Jump();
@@ -39,9 +37,31 @@ public class PlayerMovement : MonoBehaviour
         {
             playerBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
 
+
+    public void Move()
+    {
+        float move = Input.GetAxis("Horizontal");
+        /*if (move > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (move < 0 && facingRight)
+        {
+            Flip();
+        }
+        */
+        playerBody.velocity = new Vector2(move * speed, playerBody.velocity.y);
 
     }
+
+    public void Flip()
+    {
+        Debug.Log("PLAYER FLIPPED");
+        transform.Rotate(0f, 180f, 0f);
+    }
+
 
     private void Jump()
     {

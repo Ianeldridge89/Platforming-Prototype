@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8917c5eccde19f843b087cde0624de12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 0
+  projectilePrefab: {fileID: 1429674030463895491, guid: 4950dc8921d626c46a54003ac0da55bc, type: 3}

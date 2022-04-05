@@ -6,36 +6,57 @@ using UnityEngine;
 //use inhertiance to connect to combat class
 public class PlayerCombat : MonoBehaviour
 {
-    public int playerHealth;
+    public static int playerHealth;
+    public static bool isAlive;
+    public GameObject projectilePrefab;
 
     private void Start()
     {
         playerHealth = 100;
+        isAlive = true;
     }
+
+    private void Update()
+    {
+        DeathCheck();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        Debug.Log("SHOT FIRED!");
+    }
+
+
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             Damage((EnemyCombat.enemyDamage));
-         
         }
     }
 
-    public void Damage(int attackDamage)
+//removes the value of attack damage from the player's health
+    public static void Damage(int damage)
     {
-        playerHealth = playerHealth - attackDamage;
-        Debug.Log("HIT! TAKE " + attackDamage + " DAMAGE. REMAINING HEALTH: " + playerHealth);
+        playerHealth = playerHealth - damage;
+        Debug.Log("HIT! TAKE " + damage + " DAMAGE. REMAINING HEALTH: " + playerHealth);
+    }
+
+//checks to see whether the player has taken enough damage to die
+    public static void DeathCheck()
+    {
         if (playerHealth <= 0)
         {
-            Dead();
+            isAlive = false;
+            Debug.Log("YOU ARE DEAD");
         }
-
-    }
-
-    public static void Dead()
-    {
-        Debug.Log("YOU ARE DEAD");
     }
 
 }

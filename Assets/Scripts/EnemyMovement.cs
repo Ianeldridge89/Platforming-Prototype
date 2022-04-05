@@ -70,4 +70,11 @@ public class EnemyMovement : MonoBehaviour
         transform.Translate(Vector2.right * movementSpeed * Time.deltaTime);
         Debug.DrawRay(transform.position, Vector2.right * 6, Color.green);
     }
+
+    
+
+
 }
+
+
+

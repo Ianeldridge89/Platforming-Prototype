@@ -8,9 +8,8 @@ public class EnemyCombat : MonoBehaviour
 {
     private BoxCollider2D enemyCollider;
     private Rigidbody2D enemyBody;
-    static public int enemyDamage;
-    private Transform sightStart;
-    private Transform sightEnd;
+    public static int enemyDamage;
+    public GameObject projectilePrefab;
 
     private void Start()
     {
@@ -19,37 +18,15 @@ public class EnemyCombat : MonoBehaviour
         enemyDamage = 10;
     }
 
-    void FixedUpdate()
+
+
+    private static void Attack(int enemyDamage)
     {
 
-
-        /*Vector2 forward = transform.TransformDirection(Vector2.left) * 5;
-        Debug.DrawRay(transform.position, forward, Color.green);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, (forward * 5));
-
-        if (hit.collider != null)
-        {
-            Debug.Log("PLAYER SEEN!");
-        }
-        else
-        {
-            Debug.Log("PLAYER NOT SEEN");
-        }*/
-    }
-
-
-
-
-
-    private void ScanRight()
-    {
-        
-    }
-
-    private void ScanLeft()
-    {
+        PlayerCombat.Damage(enemyDamage);
 
     }
+
 
     // if the player enters the enemy's field of view,
     //  the enemy shoots the player
