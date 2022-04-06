@@ -11,14 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask platformLayerMask;
     private Rigidbody2D playerBody;
     private BoxCollider2D playerCollider;
-    private bool facingRight;
+    public static bool facingRight;
+    private float movement;
 
     // collects the rigidbody and collider.
     private void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
-        playerBody.freezeRotation = true;        
+        playerBody.freezeRotation = true;
+        facingRight = true;
     }
 
     // changes the velocity and direction of the player.  
@@ -39,21 +41,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     public void Move()
     {
-        float move = Input.GetAxis("Horizontal");
-        /*if (move > 0 && !facingRight)
+        movement = Input.GetAxis("Horizontal");
+        if (movement < 0 && facingRight)
         {
             Flip();
         }
-        else if (move < 0 && facingRight)
+        else if (movement > 0 && !facingRight)
         {
             Flip();
         }
-        */
-        playerBody.velocity = new Vector2(move * speed, playerBody.velocity.y);
-
+        if (movement > 0)
+        {
+            facingRight = true;
+            Debug.Log("Facing Right");
+        }
+        else if (movement < 0)
+        {
+            facingRight = false;
+            Debug.Log("Facing Left");
+        }
+        playerBody.velocity = new Vector2(movement * speed, playerBody.velocity.y);
     }
 
     public void Flip()

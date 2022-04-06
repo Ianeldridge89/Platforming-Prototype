@@ -8,12 +8,17 @@ public class PlayerCombat : MonoBehaviour
 {
     public static int playerHealth;
     public static bool isAlive;
+
     public GameObject projectilePrefab;
+    public static float projectileSpeed = 20f;
+    public Vector3 projectileOrigin;
+    public static int projectileDirection;
 
     private void Start()
     {
         playerHealth = 100;
         isAlive = true;
+
     }
 
     private void Update()
@@ -27,7 +32,17 @@ public class PlayerCombat : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        if (PlayerMovement.facingRight)
+        {
+            projectileDirection = 1;
+        }
+        else if (!PlayerMovement.facingRight)
+        {
+            projectileDirection = -1;
+        }
+        projectileOrigin = new Vector3((transform.position.x + projectileDirection), transform.position.y, transform.position.z) ;
+        Instantiate(projectilePrefab, projectileOrigin, projectilePrefab.transform.rotation);
+
         Debug.Log("SHOT FIRED!");
     }
 
