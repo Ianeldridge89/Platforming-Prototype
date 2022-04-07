@@ -6,17 +6,20 @@ using UnityEngine;
 //use inhertiance to connect to combat class
 public class PlayerCombat : MonoBehaviour
 {
-    public static int playerHealth;
+    public static float playerHealth;
     public static bool isAlive;
+    public static float playerDamage;
 
+    // Projectile properties. Might move to Projectile Behaviour.
     public GameObject projectilePrefab;
     public static float projectileSpeed = 20f;
     public Vector3 projectileOrigin;
-    public static int projectileDirection;
+    public static float projectileDirection;
 
     private void Start()
     {
         playerHealth = 100;
+        playerDamage = 25;
         isAlive = true;
 
     }
@@ -49,19 +52,13 @@ public class PlayerCombat : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Damage((EnemyCombat.enemyDamage));
-        }
-    }
+
 
 //removes the value of attack damage from the player's health
-    public static void Damage(int damage)
+    public static void TakeDamage(float damage)
     {
-        playerHealth = playerHealth - damage;
-        Debug.Log("HIT! TAKE " + damage + " DAMAGE. REMAINING HEALTH: " + playerHealth);
+        playerHealth -= damage;
+        Debug.Log("YOU ARE HIT! TAKE " + damage + " DAMAGE. REMAINING HEALTH: " + playerHealth);
     }
 
 //checks to see whether the player has taken enough damage to die

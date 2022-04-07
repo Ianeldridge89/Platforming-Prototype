@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpSpeed;
-    [SerializeField] private float fallMultiplier;
-    [SerializeField] private float lowJumpMultiplier;
-    [SerializeField] private LayerMask platformLayerMask;
-    private Rigidbody2D playerBody;
-    private BoxCollider2D playerCollider;
+    [SerializeField] public float speed;
+    [SerializeField] public float jumpSpeed;
+    [SerializeField] public float fallMultiplier;
+    [SerializeField] public float lowJumpMultiplier;
+    [SerializeField] public LayerMask platformLayerMask;
+    public Rigidbody2D playerBody;
+    public BoxCollider2D playerCollider;
     public static bool facingRight;
-    private float movement;
+    public float movement;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -55,34 +55,31 @@ public class PlayerMovement : MonoBehaviour
         if (movement > 0)
         {
             facingRight = true;
-            Debug.Log("Facing Right");
         }
         else if (movement < 0)
         {
             facingRight = false;
-            Debug.Log("Facing Left");
         }
         playerBody.velocity = new Vector2(movement * speed, playerBody.velocity.y);
     }
 
     public void Flip()
-    {
-        Debug.Log("PLAYER FLIPPED");
+    { 
         transform.Rotate(0f, 180f, 0f);
     }
 
 
-    private void Jump()
+    public void Jump()
     {
         playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
     }
 
-    private void Fly()
+    public void Fly()
     {
         playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, .1f, platformLayerMask);
     }
