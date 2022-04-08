@@ -33,6 +33,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    //creates a new projectile that will be fired in the determined direction.
     private void Shoot()
     {
         if (PlayerMovement.facingRight)
@@ -48,10 +49,6 @@ public class PlayerCombat : MonoBehaviour
 
         Debug.Log("SHOT FIRED!");
     }
-
-
-
-
 
 
 //removes the value of attack damage from the player's health

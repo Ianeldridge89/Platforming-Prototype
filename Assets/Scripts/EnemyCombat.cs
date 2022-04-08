@@ -11,6 +11,7 @@ public class EnemyCombat : MonoBehaviour
     public float enemyDamage;
     public GameObject projectilePrefab;
     private float enemyHealth;
+    public static int pointsValue;
     //private static bool isDead;
 
     private void Start()
@@ -19,6 +20,7 @@ public class EnemyCombat : MonoBehaviour
         enemyBody = GetComponent<Rigidbody2D>();
         enemyDamage = 20.0f;
         enemyHealth = 100.0f;
+        pointsValue = 25;
         //isDead = false;
 
     }
@@ -51,6 +53,7 @@ public class EnemyCombat : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
+            GameManager.PointScored(pointsValue);
         }
     }
 
