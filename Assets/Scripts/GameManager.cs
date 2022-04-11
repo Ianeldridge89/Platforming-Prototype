@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
-        scoreText.text = "Score: " + score;
+        //scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame

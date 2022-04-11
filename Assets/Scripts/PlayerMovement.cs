@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D playerCollider;
     public static bool facingRight;
     public float movement;
+    public bool doubleJumpAvailable;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -21,23 +22,30 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         playerBody.freezeRotation = true;
         facingRight = true;
+        doubleJumpAvailable = true;
     }
 
     // changes the velocity and direction of the player.  
     private void Update()
     {
         Move();        
-        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        Jump();
+        if (IsGrounded())
         {
-            Jump();
+            doubleJumpAvailable = true;
         }
-        if (playerBody.velocity.y < 0)
+        if (!IsGrounded())
         {
-            playerBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (playerBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
-        {
-            playerBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (doubleJumpAvailable)
+                {
+                    playerBody.velocity = Vector2.up * jumpSpeed;
+                    doubleJumpAvailable = false;
+                }
+                
+                
+            }
         }
     }
 
@@ -71,7 +79,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (IsGrounded())
+            {
+            playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
+            }
+        }
+        if (playerBody.velocity.y < 0)
+        {
+            playerBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (playerBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            playerBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
     }
 
     public void Fly()

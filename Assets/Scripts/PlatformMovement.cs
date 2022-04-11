@@ -12,11 +12,18 @@ public class PlatformMovement : MonoBehaviour
     private void Start()
     {
 
-        movementSpeed = 1.5f;
+        movementSpeed = Random.Range(1, 7);
         startingPosition = transform.position;
-        isGoingLeft = true;
+        isGoingLeft = randomBoolean;
         walkingDistance = 3.0f;
     }
+
+    private bool randomBoolean
+    {
+        get { return (Random.value > 0.5f);  }
+    }
+
+
 
     private void Update()
     {
