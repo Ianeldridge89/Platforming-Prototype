@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public static bool facingRight;
     public float movement;
     public bool doubleJumpAvailable;
+    public float dashSpeed;
+    public bool dashIsAvailable;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -22,7 +24,14 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         playerBody.freezeRotation = true;
         facingRight = true;
+        speed = 6.5f;
+        dashSpeed = 20.0f;
+        jumpSpeed = 7.5f;
+        fallMultiplier = 2.5f;
+        lowJumpMultiplier = 8.0f;
+
         doubleJumpAvailable = true;
+        dashIsAvailable = true;
     }
 
     // changes the velocity and direction of the player.  
@@ -30,13 +39,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();        
         Jump();
+        Dash();
         if (IsGrounded())
         {
             doubleJumpAvailable = true;
+            dashIsAvailable = true;
         }
         if (!IsGrounded())
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (doubleJumpAvailable)
                 {
@@ -71,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         playerBody.velocity = new Vector2(movement * speed, playerBody.velocity.y);
     }
 
+
     public void Flip()
     { 
         transform.Rotate(0f, 180f, 0f);
@@ -97,9 +109,38 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void Fly()
+
+
+    public void Dash()
     {
-        playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
+        if (Input.GetKey(KeyCode.Q) && dashIsAvailable)
+        {
+            float dashDirection;
+            if (facingRight)
+            {
+                dashDirection = 1;
+            }
+            else
+            {
+                dashDirection = -1;
+            }
+        playerBody.velocity = Vector2.right * dashSpeed * dashDirection; 
+        }
+    }
+
+
+    public void Dash2()
+    {
+        if (facingRight)
+        {
+            playerBody.velocity = Vector2.right * dashSpeed;
+        }
+        else
+        {
+            playerBody.velocity = Vector2.left * dashSpeed;
+        }
+
+        //dashIsAvailable = false;        
     }
 
     public bool IsGrounded()

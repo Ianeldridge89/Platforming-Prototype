@@ -19,7 +19,7 @@ public class PlayerCombat : MonoBehaviour
     private void Start()
     {
         playerHealth = 100;
-        playerDamage = 25;
+        playerDamage = 34;
         isAlive = true;
 
     }
