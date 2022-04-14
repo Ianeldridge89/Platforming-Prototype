@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             doubleJumpAvailable = true;
-            dashIsAvailable = true;
+            
         }
         if (!IsGrounded())
         {
@@ -124,8 +124,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 dashDirection = -1;
             }
-        playerBody.velocity = Vector2.right * dashSpeed * dashDirection; 
+        playerBody.velocity = Vector2.right * dashSpeed * dashDirection;
+        StartCoroutine(DashLengthCheck());
         }
+
+    }
+
+    IEnumerator DashLengthCheck()
+    {
+        yield return new WaitForSeconds(0.5f);
+        dashIsAvailable = false;
+        yield return new WaitForSeconds(3);
+        dashIsAvailable = true;
     }
 
 
