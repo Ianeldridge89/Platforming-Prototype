@@ -52,6 +52,7 @@ public class EnemyCombat : MonoBehaviour
     {
         if (enemyHealth <= 0)
         {
+            enemyHealth = 0;
             Destroy(gameObject);
             GameManager.PointScored(pointsValue);
         }

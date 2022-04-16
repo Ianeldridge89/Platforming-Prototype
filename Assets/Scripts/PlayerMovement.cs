@@ -24,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         playerBody.freezeRotation = true;
         facingRight = true;
-        speed = 6.5f;
+        speed = 8.5f;
         dashSpeed = 20.0f;
-        jumpSpeed = 7.5f;
+        jumpSpeed = 10.0f;
         fallMultiplier = 2.5f;
         lowJumpMultiplier = 8.0f;
 
@@ -38,26 +38,14 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Move();        
-        Jump();
-        Dash();
+        //Jump();
+        //Dash();
         if (IsGrounded())
         {
             doubleJumpAvailable = true;
             
         }
-        if (!IsGrounded())
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (doubleJumpAvailable)
-                {
-                    playerBody.velocity = Vector2.up * jumpSpeed;
-                    doubleJumpAvailable = false;
-                }
-                
-                
-            }
-        }
+        //DoubleJump();
     }
 
     public void Move()
@@ -91,12 +79,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (IsGrounded())
         {
-            if (IsGrounded())
-            {
             playerBody.velocity = new Vector2(playerBody.velocity.x, jumpSpeed);
-            }
+        }
+        else if (doubleJumpAvailable)
+        {
+            DoubleJump();
         }
         if (playerBody.velocity.y < 0)
         {
@@ -109,11 +98,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void DoubleJump()
+    {
+        playerBody.velocity = Vector2.up * jumpSpeed;
+        doubleJumpAvailable = false;
+    }
+
+
 
 
     public void Dash()
     {
-        if (Input.GetKey(KeyCode.Q) && dashIsAvailable)
+        if (dashIsAvailable)
         {
             float dashDirection;
             if (facingRight)

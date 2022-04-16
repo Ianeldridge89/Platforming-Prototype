@@ -15,27 +15,29 @@ public class PlayerCombat : MonoBehaviour
     public static float projectileSpeed = 20f;
     public Vector3 projectileOrigin;
     public static float projectileDirection;
+    public static bool hasGun;
 
     private void Start()
     {
         playerHealth = 100;
         playerDamage = 34;
         isAlive = true;
-
+        hasGun = true;
     }
 
     private void Update()
     {
         DeathCheck();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && hasGun)
         {
             Shoot();
         }
     }
 
     //creates a new projectile that will be fired in the determined direction.
-    private void Shoot()
+    public void Shoot()
     {
+
         if (PlayerMovement.facingRight)
         {
             projectileDirection = 1;

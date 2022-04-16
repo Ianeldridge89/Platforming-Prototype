@@ -1,30 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GunPickupBehaviour : MonoBehaviour
 {
-    public static int score;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        //scoreText.text = "Score: " + score;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public static void PointScored(int pointValue)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Destroy(gameObject);
+        PlayerCombat.hasGun = true;
     }
-
-
 }
