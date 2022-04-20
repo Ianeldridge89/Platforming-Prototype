@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class JumpBehaviour : MonoBehaviour
 {
     [SerializeField] public float speed;
     [SerializeField] public float jumpSpeed;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     // changes the velocity and direction of the player.  
     private void Update()
     {
-        Move();        
+        Move();
         Jump();
         Dash();
         if (IsGrounded())
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public void Flip()
-    { 
+    {
         transform.Rotate(0f, 180f, 0f);
     }
 
