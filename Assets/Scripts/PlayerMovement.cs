@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (!IsGrounded())
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Jump"))
             {
                 if (doubleJumpAvailable)
                 {
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetButton("Jump"))
         {
             if (IsGrounded())
             {
@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (playerBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        else if (playerBody.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             playerBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash()
     {
-        if (Input.GetKey(KeyCode.Q) && dashIsAvailable)
+        if (Input.GetButton("Dash") && dashIsAvailable)
         {
             float dashDirection;
             if (facingRight)
@@ -128,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 dashDirection = -1;
             }
-            playerBody.velocity = Vector2.right * dashSpeed * dashDirection;
             playerBody.velocity = Vector2.right * dashSpeed * dashDirection;
             StartCoroutine(DashLengthCheck());
         }
@@ -141,21 +140,6 @@ public class PlayerMovement : MonoBehaviour
         dashIsAvailable = false;
         yield return new WaitForSeconds(3);
         dashIsAvailable = true;
-    }
-
-
-    public void Dash2()
-    {
-        if (facingRight)
-        {
-            playerBody.velocity = Vector2.right * dashSpeed;
-        }
-        else
-        {
-            playerBody.velocity = Vector2.left * dashSpeed;
-        }
-
-        //dashIsAvailable = false;        
     }
 
     public bool IsGrounded()
