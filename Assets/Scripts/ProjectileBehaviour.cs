@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
-    public float speed = 40.0f;
+    [Header("Components")]
     public Rigidbody2D rb;
     public static float projectileDamage;
+
+    [Header("Physics")]
+    public float speed = 40.0f;
+
     
     // Start is called before the first frame update
     void Start()

@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Components")]
+    public Rigidbody2D playerBody;
+    public BoxCollider2D playerCollider;
+    [SerializeField] public LayerMask platformLayerMask;
+
+    [Header("Physics")]
+    [SerializeField] public float playerMass;
+    public static bool facingRight;
     [SerializeField] public float speed;
     [SerializeField] public float jumpSpeed;
     [SerializeField] public float fallMultiplier;
     [SerializeField] public float lowJumpMultiplier;
-    [SerializeField] public LayerMask platformLayerMask;
-    public Rigidbody2D playerBody;
-    public BoxCollider2D playerCollider;
-    public static bool facingRight;
     public float movement;
+
+    [Header("Abilities")]
     public bool doubleJumpAvailable;
     public float dashSpeed;
     public bool dashIsAvailable;
-    [SerializeField] public float playerMass;
+
 
     // collects the rigidbody and collider.
     private void Start()
     {
+        
         playerBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         playerBody.freezeRotation = true;
@@ -52,12 +59,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (doubleJumpAvailable)
                 {
-                    playerBody.velocity = Vector2.up * jumpSpeed;
-                    doubleJumpAvailable = false;
+                    DoubleJump();
                 }
             }
         }
     }
+
 
     public void Move()
     {

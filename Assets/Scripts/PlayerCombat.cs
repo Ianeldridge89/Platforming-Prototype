@@ -28,7 +28,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         DeathCheck();
-        if (Input.GetKeyDown(KeyCode.E) && hasGun)
+        if (Input.GetButtonDown("Fire1") && hasGun)
         {
             Shoot();
         }
