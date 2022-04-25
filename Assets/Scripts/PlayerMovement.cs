@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public bool dashIsAvailable;
 
+    [Header("TEST")]
+    [SerializeField] public float wallCast = 1f;
+    [SerializeField] public float castDirection = 1f;
+    public bool hitWall = false;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -38,9 +42,11 @@ public class PlayerMovement : MonoBehaviour
         jumpSpeed = 10.0f;
         fallMultiplier = 2.5f;
         lowJumpMultiplier = 8.0f;
+        wallCast = 1f;
 
         doubleJumpAvailable = true;
         dashIsAvailable = true;
+        hitWall = false;
     }
 
     // changes the velocity and direction of the player.  
@@ -63,8 +69,30 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        //test
+        Debug.DrawRay(transform.position, Vector2.right * (wallCast * castDirection), Color.green);
+        if (facingRight)
+        {
+            castDirection = 1;
+        }
+        else
+        {
+            castDirection = -1;
+        }
+        hitWall = WallCheck();
+        if (hitWall)
+        {
+            movement = 0;
+            Debug.Log("Hit a wall");
+        }
+
     }
 
+    public bool WallCheck()
+    {
+        return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.right, .1f, platformLayerMask);
+    }
 
     public void Move()
     {
@@ -154,5 +182,6 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, .1f, platformLayerMask);
     }
 
+    
 
 }
