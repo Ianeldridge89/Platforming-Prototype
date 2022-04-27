@@ -16204,6 +16204,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8886805617831055527, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
+      propertyPath: playerMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886805617831055527, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
+      propertyPath: mask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8886805617831055530, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
       propertyPath: m_RootOrder
       value: 3

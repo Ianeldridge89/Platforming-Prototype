@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float wallCast = 1f;
     [SerializeField] public float castDirection = 1f;
     public bool hitWall = false;
+    [SerializeField] public float wallOffset = 0.5f;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         fallMultiplier = 2.5f;
         lowJumpMultiplier = 8.0f;
         wallCast = 1f;
-
+        wallOffset = 0.5f;
         doubleJumpAvailable = true;
         dashIsAvailable = true;
         hitWall = false;
@@ -69,9 +70,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
-        //test
-        Debug.DrawRay(transform.position, Vector2.right * (wallCast * castDirection), Color.green);
         if (facingRight)
         {
             castDirection = 1;
@@ -80,18 +78,22 @@ public class PlayerMovement : MonoBehaviour
         {
             castDirection = -1;
         }
-        hitWall = WallCheck();
-        if (hitWall)
+        bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask) || Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask);
+        if (hitObstacle)
         {
+            Debug.Log("hit wall");
+            hitWall = true;
             movement = 0;
-            Debug.Log("Hit a wall");
         }
-
+        else
+        {
+            hitWall = false;
+        }
     }
 
     public bool WallCheck()
     {
-        return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.right, .1f, platformLayerMask);
+        return Physics2D.BoxCast(playerCollider.bounds.center - (new Vector3 (0, 1, 0)), playerCollider.bounds.size, 0f, Vector2.right, .1f, platformLayerMask);
     }
 
     public void Move()
