@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public LayerMask platformLayerMask;
 
     [Header("Physics")]
+    public bool isGrounded;
     [SerializeField] public float playerMass;
     public static bool facingRight;
     [SerializeField] public float speed;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     // changes the velocity and direction of the player.  
     private void Update()
     {
+        isGrounded = IsGrounded();
         Move();        
         Jump();
         Dash();
@@ -78,16 +80,22 @@ public class PlayerMovement : MonoBehaviour
         {
             castDirection = -1;
         }
-        bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask) || Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask);
+        //bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask) || Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask);
+        bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.right * castDirection, 0.1f, platformLayerMask);
+
         if (hitObstacle)
         {
             Debug.Log("hit wall");
             hitWall = true;
             movement = 0;
+            playerBody.AddForce(Vector2.down * 7);
+            jumpSpeed = 0;
+            
         }
         else
         {
             hitWall = false;
+            jumpSpeed = 10.0f;
         }
     }
 

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    static public float movementSpeed;
+    public float movementSpeed;
     private BoxCollider2D enemyCollider;
     private Rigidbody2D enemyBody;
     static public int enemyDamage;
     private Vector2 startingPosition;
-    private bool isGoingLeft;
+    public bool isGoingLeft;
     private float walkingDistance;
+    public float walkingDirection = 1f;
+    [SerializeField] float lookDistance = 5;
+    public LayerMask platformLayerMask;
+    public GameObject projectilePrefab;
 
     private void Start()
     {
@@ -21,29 +25,15 @@ public class EnemyMovement : MonoBehaviour
         startingPosition = transform.position;
         isGoingLeft = true;
         walkingDistance = 3.0f;
+        walkingDirection = 1;
+        lookDistance = 5;
     }
 
     private void Update()
     {
-        Patrol();
-    }
-
-    private void Position()
-    {
-        Debug.Log("Position is: " + startingPosition);
-    }
-
-    private void Patrol()
-    {
-        if (isGoingLeft == true)
-        {
-            MoveLeft();
-        }
-        else
-        {
-            MoveRight();
-        }
+        Move();
         CheckDirection();
+        Patrol();
     }
 
     private void CheckDirection()
@@ -57,19 +47,53 @@ public class EnemyMovement : MonoBehaviour
         {
             isGoingLeft = true;
         }
+        if (isGoingLeft)
+        {
+            walkingDirection = -1;
+        }
+        else
+        {
+            walkingDirection = 1;
+        }
+    }
+    
+    private void Move()
+    {
+        transform.Translate(Vector2.right * movementSpeed * walkingDirection * Time.deltaTime);
+
     }
 
-    private void MoveLeft()
+    public void Patrol()
     {
-        transform.Translate(Vector2.left * movementSpeed * Time.deltaTime);
-        Debug.DrawRay(transform.position, Vector2.left * 6, Color.green);
+        float raycastOffset = 1 * walkingDirection;
+        Vector2 rayPosition = new Vector2(transform.position.x + raycastOffset, transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(rayPosition, Vector2.right * walkingDirection, lookDistance);
+        if(hit.collider != null)
+        {
+            Debug.DrawRay(transform.position, Vector2.right * walkingDirection * lookDistance, Color.red);
+            Shoot(walkingDirection);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, Vector2.right * walkingDirection * lookDistance, Color.green);
+        }
+
+
+        //
     }
 
-    private void MoveRight()
+    public void Shoot(float walkingDirection)
     {
-        transform.Translate(Vector2.right * movementSpeed * Time.deltaTime);
-        Debug.DrawRay(transform.position, Vector2.right * 6, Color.green);
+        movementSpeed = 0;
+        Vector2 projectileOrigin = new Vector2((transform.position.x + (2 * walkingDirection)), transform.position.y);
+        Instantiate(projectilePrefab, projectileOrigin, projectilePrefab.transform.rotation);
+        movementSpeed = 1.5f;
     }
+    private void WallCheck()
+    {
+
+    }
+
 
     
 

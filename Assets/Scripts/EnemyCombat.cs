@@ -9,9 +9,10 @@ public class EnemyCombat : MonoBehaviour
     public BoxCollider2D enemyCollider;
     public Rigidbody2D enemyBody;
     public float enemyDamage;
-    public GameObject projectilePrefab;
+
     private float enemyHealth;
     public static int pointsValue;
+    public Vector2 projectileOrigin;
     //private static bool isDead;
 
     private void Start()
@@ -47,6 +48,8 @@ public class EnemyCombat : MonoBehaviour
             PlayerCombat.TakeDamage(enemyDamage);
         }
     }
+
+
 
     public void DeathCheck()
     {

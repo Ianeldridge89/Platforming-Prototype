@@ -291,9 +291,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 72277289, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
-      propertyPath: m_Name
-      value: CharacterSprite
+    - target: {fileID: 248277535, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886805617831055529, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886805617831055529, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8886805617831055530, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
       propertyPath: m_RootOrder
