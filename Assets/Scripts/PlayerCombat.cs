@@ -6,16 +6,21 @@ using UnityEngine;
 //use inhertiance to connect to combat class
 public class PlayerCombat : MonoBehaviour
 {
-    public static float playerHealth;
-    public static bool isAlive;
-    public static float playerDamage;
-
-    // Projectile properties. Might move to Projectile Behaviour.
+    [Header("Components")]
     public GameObject projectilePrefab;
+
+    [Header("Physics")]
     public static float projectileSpeed = 20f;
     public Vector3 projectileOrigin;
     public static float projectileDirection;
+
+    [Header("Abilities")]
     public static bool hasGun;
+
+    [Header("Atrributes")]
+    public static float playerHealth;
+    public static bool isAlive;
+    public static float playerDamage;
 
     private void Start()
     {

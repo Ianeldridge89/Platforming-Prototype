@@ -5,7 +5,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static int score;
+    [Header("Score")]
+    [SerializeField] public static int score;
 
 
     // Start is called before the first frame update

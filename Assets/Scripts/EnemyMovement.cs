@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float movementSpeed;
+    [Header("Components")]
     private BoxCollider2D enemyCollider;
     private Rigidbody2D enemyBody;
-    static public int enemyDamage;
-    private Vector2 startingPosition;
-    public bool isGoingLeft;
-    private float walkingDistance;
-    public float walkingDirection = 1f;
-    [SerializeField] float lookDistance = 5;
     public LayerMask platformLayerMask;
     public GameObject projectilePrefab;
+
+    [Header("Physics")]
+    [SerializeField] public float movementSpeed;
+    [SerializeField] private float walkingDistance;
+    private Vector2 startingPosition;
+    public float walkingDirection = 1f;
+
+    [Header("Abilities")]
+    [SerializeField] static public int enemyDamage;
+
+    [Header("Attributes")]
+    [SerializeField] float lookDistance = 5;
+    public bool isGoingLeft;
+
 
     private void Start()
     {

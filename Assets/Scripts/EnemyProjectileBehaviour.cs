@@ -14,7 +14,6 @@ public class EnemyProjectileBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         rb.velocity = Vector2.right * speed;
 
     }

@@ -33,20 +33,26 @@ public class PlayerMovement : MonoBehaviour
     // collects the rigidbody and collider.
     private void Start()
     {
-        
+        // Components
         playerBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         playerBody.freezeRotation = true;
+
+        //Physics
         playerBody.mass = 2;
         facingRight = true;
         speed = 8.5f;
-        dashSpeed = 20.0f;
         jumpSpeed = 10.0f;
         fallMultiplier = 2.5f;
         lowJumpMultiplier = 8.0f;
+        
+        //Abilities
+        doubleJumpAvailable = true;
+        dashSpeed = 20.0f;
+
+        //TEST
         wallCast = 1f;
         wallOffset = 0.5f;
-        doubleJumpAvailable = true;
         dashIsAvailable = true;
         hitWall = false;
     }
@@ -80,9 +86,7 @@ public class PlayerMovement : MonoBehaviour
         {
             castDirection = -1;
         }
-        //bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask) || Physics2D.BoxCast(playerCollider.bounds.center + new Vector3(0, wallOffset, 0), playerCollider.bounds.size, 0f, Vector2.right * castDirection, .3f, platformLayerMask);
         bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.right * castDirection, 0.1f, platformLayerMask);
-
         if (hitObstacle)
         {
             Debug.Log("hit wall");
@@ -107,11 +111,7 @@ public class PlayerMovement : MonoBehaviour
     public void Move()
     {
         movement = Input.GetAxis("Horizontal");
-        if (movement < 0 && facingRight)
-        {
-            Flip();
-        }
-        else if (movement > 0 && !facingRight)
+        if (movement < 0 && facingRight || movement > 0 && !facingRight)
         {
             Flip();
         }

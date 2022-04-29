@@ -6,19 +6,27 @@ using UnityEngine;
 //use inhertiance to connect to combat class
 public class EnemyCombat : MonoBehaviour
 {
+    [Header("Components")]
     public BoxCollider2D enemyCollider;
     public Rigidbody2D enemyBody;
-    public float enemyDamage;
 
+    [Header("Physics")]
+    public Vector2 projectileOrigin;
+
+    [Header("Attributes")]
+    public float enemyDamage;
     private float enemyHealth;
     public static int pointsValue;
-    public Vector2 projectileOrigin;
+
     //private static bool isDead;
 
     private void Start()
     {
+        // Components
         enemyCollider = GetComponent<BoxCollider2D>();
         enemyBody = GetComponent<Rigidbody2D>();
+
+        //Attributes
         enemyDamage = 20.0f;
         enemyHealth = 100.0f;
         pointsValue = 25;
