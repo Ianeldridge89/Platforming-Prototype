@@ -23,6 +23,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float lookDistance = 5;
     public bool isGoingLeft;
 
+    [Header("Status")]
+    public bool inCombat;
+    public bool isPatrolling;
+
 
     private void Start()
     {
@@ -79,6 +83,7 @@ public class EnemyMovement : MonoBehaviour
         if(hit.collider != null)
         {
             Debug.DrawRay(transform.position, Vector2.right * walkingDirection * lookDistance, Color.red);
+            inCombat = true;
             Shoot(walkingDirection);
         }
         else
