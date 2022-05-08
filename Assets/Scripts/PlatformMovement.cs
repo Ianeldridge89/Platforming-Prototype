@@ -8,10 +8,10 @@ public class PlatformMovement : MonoBehaviour
     private Vector2 startingPosition;
     private bool isGoingLeft;
     private float walkingDistance;
+    public GameObject Player;
 
     private void Start()
     {
-
         movementSpeed = Random.Range(1, 7);
         startingPosition = transform.position;
         isGoingLeft = randomBoolean;
@@ -20,7 +20,10 @@ public class PlatformMovement : MonoBehaviour
 
     private bool randomBoolean
     {
-        get { return (Random.value > 0.5f);  }
+        get
+        {
+            return (Random.value > 0.5f);
+        }
     }
 
 
@@ -70,4 +73,5 @@ public class PlatformMovement : MonoBehaviour
     {
         transform.Translate(Vector2.right * movementSpeed * Time.deltaTime);
     }
+
 }

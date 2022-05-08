@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float castDirection = 1f;
     public bool hitWall = false;
     [SerializeField] public float wallOffset = 0.5f;
+    public bool onMovingPlatform;
 
     // collects the rigidbody and collider.
     private void Start()
@@ -192,6 +193,31 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, .1f, platformLayerMask);
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == ("MovingPlatform"))
+        {
+            transform.parent = collision.transform;
+            onMovingPlatform = true;
+        }
+        if (collision.gameObject.tag == ("Elevator"))
+        {
+            ElevatorMovement.onElevator = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == ("MovingPlatform"))
+        {
+            transform.parent = null;
+            onMovingPlatform = false;
+        }
+        if (collision.gameObject.tag == ("Elevator"))
+        {
+            ElevatorMovement.onElevator = false;
+        }
+    }
+
+
 
 }

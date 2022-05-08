@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - Pickup
   - GreenDoor
+  - MovingPlatform
+  - Elevator
   layers:
   - Default
   - TransparentFX
