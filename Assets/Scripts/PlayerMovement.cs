@@ -195,26 +195,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("MovingPlatform"))
+        if (collision.gameObject.tag == ("MovingPlatform") || collision.gameObject.tag == ("Elevator"))
         {
             transform.parent = collision.transform;
             onMovingPlatform = true;
         }
-        if (collision.gameObject.tag == ("Elevator"))
-        {
-            ElevatorMovement.onElevator = true;
-        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("MovingPlatform"))
+        if (collision.gameObject.tag == ("MovingPlatform") || collision.gameObject.tag == ("Elevator"))
         {
             transform.parent = null;
             onMovingPlatform = false;
-        }
-        if (collision.gameObject.tag == ("Elevator"))
-        {
-            ElevatorMovement.onElevator = false;
         }
     }
 

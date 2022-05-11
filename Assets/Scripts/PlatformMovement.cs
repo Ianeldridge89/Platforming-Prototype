@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    static public float movementSpeed;
+    [SerializeField] static public float movementSpeed;
     private Vector2 startingPosition;
     private bool isGoingLeft;
     private float walkingDistance;
@@ -12,10 +12,11 @@ public class PlatformMovement : MonoBehaviour
 
     private void Start()
     {
-        movementSpeed = Random.Range(1, 7);
+        movementSpeed = 7;
         startingPosition = transform.position;
         isGoingLeft = randomBoolean;
         walkingDistance = 3.0f;
+        Player = GameObject.FindWithTag("Player");
     }
 
     private bool randomBoolean
