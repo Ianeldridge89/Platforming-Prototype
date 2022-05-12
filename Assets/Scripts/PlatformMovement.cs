@@ -39,6 +39,7 @@ public class PlatformMovement : MonoBehaviour
         Debug.Log("Position is: " + startingPosition);
     }
 
+
     private void HorizontalMovement()
     {
         if (isGoingLeft == true)
