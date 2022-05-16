@@ -13,11 +13,7 @@ public class ElevatorActivatorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        attachedElevatorScript.GetComponent<ElevatorMovement>().onElevator = true;
+        attachedElevatorScript.GetComponent<ElevatorMovement>().elevatorActivated = true;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        attachedElevatorScript.GetComponent<ElevatorMovement>().onElevator = false;
-    }
 }

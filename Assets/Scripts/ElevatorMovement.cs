@@ -5,7 +5,7 @@ using UnityEngine;
 public class ElevatorMovement : MonoBehaviour
 {
     public float movementSpeed;
-    public bool onElevator;
+    public bool elevatorActivated;
     public float floorDistance;
     public float yPosition;
 
@@ -17,14 +17,14 @@ public class ElevatorMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movementSpeed = 4;
+        movementSpeed = 5;
         yPosition = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     { 
-        if (onElevator)
+        if (elevatorActivated)
         { 
             yPosition = transform.position.y; 
             if (onBottomFloor)
@@ -46,6 +46,7 @@ public class ElevatorMovement : MonoBehaviour
         if (yPosition >= topPosition)
         {
             onBottomFloor = false;
+            elevatorActivated = false;
         }
     }
 
@@ -55,6 +56,7 @@ public class ElevatorMovement : MonoBehaviour
         if (yPosition <= bottomPosition)
         {
             onBottomFloor = true;
+            elevatorActivated = false;
         }
     }
 

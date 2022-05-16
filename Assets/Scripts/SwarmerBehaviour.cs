@@ -20,7 +20,7 @@ public class SwarmerBehaviour : MonoBehaviour
         spawnPosition = transform.position;
         lookLeftDirection = new Vector2(-2.0f, -7.5f);
         lookRightDirection = new Vector2(lookLeftDirection.x * -1, lookLeftDirection.y);
-        attackSpeed = 8;
+        attackSpeed = 12;
         patrolling = true;
         attacking = false;
         raycastOffset = 2.0f;
@@ -29,11 +29,13 @@ public class SwarmerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Attack();
-        Patrol();
         if (attacking)
         {
-            //Attack();
+            Attack();
+        }
+        else if (patrolling)
+        {
+            Patrol();
         }
     }
 
@@ -52,6 +54,7 @@ public class SwarmerBehaviour : MonoBehaviour
         {
             Debug.DrawRay(spawnPosition, lookLeftDirection, Color.red);
             attacking = true;
+            patrolling = false;
         }
         else
         {
@@ -61,6 +64,7 @@ public class SwarmerBehaviour : MonoBehaviour
         {
             Debug.DrawRay(spawnPosition, lookRightDirection, Color.red);
             attacking = true;
+            patrolling = false;
         }
         else
         {
