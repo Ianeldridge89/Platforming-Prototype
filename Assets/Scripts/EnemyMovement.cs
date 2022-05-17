@@ -20,7 +20,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] static public int enemyDamage;
 
     [Header("Attributes")]
-    [SerializeField] float lookDistance = 5;
     public bool isGoingLeft;
 
     [Header("Status")]
@@ -38,14 +37,14 @@ public class EnemyMovement : MonoBehaviour
         isGoingLeft = true;
         walkingDistance = 3.0f;
         walkingDirection = 1;
-        lookDistance = 5;
+        inCombat = false;
+        isPatrolling = true;
     }
 
     private void Update()
     {
-        Move();
         CheckDirection();
-        Patrol();
+        Move(); 
     }
 
     private void CheckDirection()
@@ -75,25 +74,6 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-    public void Patrol()
-    {
-        float raycastOffset = 1 * walkingDirection;
-        Vector2 rayPosition = new Vector2(transform.position.x + raycastOffset, transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(rayPosition, Vector2.right * walkingDirection, lookDistance);
-        if(hit.collider != null)
-        {
-            Debug.DrawRay(transform.position, Vector2.right * walkingDirection * lookDistance, Color.red);
-            inCombat = true;
-            Shoot(walkingDirection);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, Vector2.right * walkingDirection * lookDistance, Color.green);
-        }
-
-
-        //
-    }
 
     public void Shoot(float walkingDirection)
     {
@@ -102,6 +82,8 @@ public class EnemyMovement : MonoBehaviour
         Instantiate(projectilePrefab, projectileOrigin, projectilePrefab.transform.rotation);
         movementSpeed = 1.5f;
     }
+
+
     private void WallCheck()
     {
 
