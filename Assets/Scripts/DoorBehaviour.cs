@@ -69,7 +69,11 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
-            openDoor = true;
+            if (!doorIsClosing)
+            {
+                openDoor = true;
+            }
+            
         }
 
     }
