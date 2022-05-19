@@ -5,27 +5,40 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Score")]
-    [SerializeField] public static int score;
+    [Header("Health Bar")]
+    public float health;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI gameOverText;
+
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        //scoreText.text = "Score: " + score;
+        healthText.text = "Health " + health;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        health = PlayerCombat.playerHealth;
+        healthText.text = "Health " + health;
+        if (!PlayerCombat.isAlive)
+        {
+            GameOver();
+        }
     }
 
-    public static void PointScored(int pointValue)
+    public void GameOver()
     {
-        
+        healthText.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(true);
     }
+
+
+    
 
 
 }

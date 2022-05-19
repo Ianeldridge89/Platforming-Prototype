@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.right * castDirection, 0.1f, platformLayerMask);
         if (hitObstacle)
         {
-            Debug.Log("hit wall");
+            //Debug.Log("hit wall");
             hitWall = true;
             movement = 0;
             playerBody.AddForce(Vector2.down * 7);
@@ -200,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
             transform.parent = collision.transform;
             onMovingPlatform = true;
         }
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

@@ -12,8 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Physics")]
     [SerializeField] public float movementSpeed;
-    [SerializeField] private float walkingDistance;
-    private Vector2 startingPosition;
+    [SerializeField] private float walkingDistance
     public float walkingDirection = 1f;
 
     [Header("Abilities")]
@@ -21,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Attributes")]
     public bool isGoingLeft;
+    private Vector2 startingPosition;
 
     [Header("Status")]
     public bool inCombat;
@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void CheckDirection()
     {
-
+        // 
         if (transform.position.x < (startingPosition.x - walkingDistance))
         {
             isGoingLeft = false;
@@ -58,6 +58,7 @@ public class EnemyMovement : MonoBehaviour
         {
             isGoingLeft = true;
         }
+        // 
         if (isGoingLeft)
         {
             walkingDirection = -1;
@@ -71,7 +72,6 @@ public class EnemyMovement : MonoBehaviour
     private void Move()
     {
         transform.Translate(Vector2.right * movementSpeed * walkingDirection * Time.deltaTime);
-
     }
 
 

@@ -32,7 +32,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        //DeathCheck();
+
         if (Input.GetButtonDown("Fire1") && hasGun)
         {
             Shoot();
@@ -63,13 +63,15 @@ public class PlayerCombat : MonoBehaviour
     {
         playerHealth -= damage;
         Debug.Log("YOU ARE HIT! TAKE " + damage + " DAMAGE. REMAINING HEALTH: " + playerHealth);
+        DeathCheck();
     }
 
 //checks to see whether the player has taken enough damage to die
     public static void DeathCheck()
     {
-        if (playerHealth <= 0)
+        if (playerHealth <= 0 && isAlive)
         {
+            playerHealth = 0;
             isAlive = false;
             Debug.Log("YOU ARE DEAD");
         }

@@ -22,7 +22,7 @@ public class PickupBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameManager.PointScored(pointValue);
+            
             Destroy(gameObject);
         }
     }
