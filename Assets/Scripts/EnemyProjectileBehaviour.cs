@@ -9,12 +9,14 @@ public class EnemyProjectileBehaviour : MonoBehaviour
     
     [Header("Physics")]
     public float speed = 40.0f;
+    public float projectileDirection;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector2.right * speed;
+        rb.velocity = transform.right * speed;
 
     }
 

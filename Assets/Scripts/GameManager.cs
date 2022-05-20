@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Health Bar")]
     public float health;
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI gameOverText;
+    //public TextMeshProUGUI healthText;
+    //public TextMeshProUGUI gameOverText;
 
     
 
@@ -16,26 +16,26 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthText.text = "Health " + health;
+        //healthText.text = "Health " + health;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        health = PlayerCombat.playerHealth;
-        healthText.text = "Health " + health;
-        if (!PlayerCombat.isAlive)
-        {
-            GameOver();
-        }
+        //health = PlayerCombat.playerHealth;
+        //healthText.text = "Health " + health;
+        //if (!PlayerCombat.isAlive)
+        //{
+            //GameOver();
+        //}
     }
 
-    public void GameOver()
-    {
-        healthText.gameObject.SetActive(false);
-        gameOverText.gameObject.SetActive(true);
-    }
+    //public void GameOver()
+    //{
+        //healthText.gameObject.SetActive(false);
+        //gameOverText.gameObject.SetActive(true);
+    //}
 
 
     

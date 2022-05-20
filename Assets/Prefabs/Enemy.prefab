@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3033486981109603640}
   - component: {fileID: 3148912207819904861}
   - component: {fileID: 5000759582808209233}
-  - component: {fileID: 585926920011453346}
   - component: {fileID: 2065050410}
   m_Layer: 0
   m_Name: Enemy
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3955029822923983702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.15, y: -0.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -134,22 +133,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &585926920011453346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3955029822923983702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b1371a5ab690943a7f00e776aae888, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCollider: {fileID: 0}
-  enemyBody: {fileID: 0}
-  enemyDamage: 0
-  projectilePrefab: {fileID: 1429674030463895491, guid: 4950dc8921d626c46a54003ac0da55bc, type: 3}
 --- !u!114 &2065050410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2c3e3831a6f774085424da570ff2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSpeed: 0
+  lookDistance: 0
+  spawnPosition: {x: 0, y: 0}
+  lookLeftDirection: {x: 0, y: 0}
+  lookRightDirection: {x: 0, y: 0}
+  raycastOffset: 0
+  patrolling: 0
+  attacking: 0
