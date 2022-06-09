@@ -12,6 +12,7 @@ TagManager:
   - MovingPlatform
   - Elevator
   - EnemySwarmer
+  - Switch
   layers:
   - Default
   - TransparentFX

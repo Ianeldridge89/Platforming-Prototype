@@ -9,7 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public static float projectileDamage;
 
     [Header("Physics")]
-    public float speed = 40.0f;
+    public float speed = 50.0f;
 
     
     // Start is called before the first frame update

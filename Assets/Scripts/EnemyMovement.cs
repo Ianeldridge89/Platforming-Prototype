@@ -40,10 +40,13 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         position = transform.position;
-        Patrol();
+        if (patrolling)
+        {
+            Patrol();
+        }
     }
 
-    // Drops down from its current position in an attempt to damage the player
+    
 
 
     // Sets the Position for the RayCast and saves it as a variable.
@@ -61,6 +64,8 @@ public class EnemyMovement : MonoBehaviour
         if (leftHit.collider != null)
         {
             Debug.DrawRay(position, lookLeftDirection, Color.red);
+            patrolling = false;
+            attacking = true;
         }
         else
         {
@@ -69,6 +74,8 @@ public class EnemyMovement : MonoBehaviour
         if (rightHit.collider != null)
         {
             Debug.DrawRay(position, lookRightDirection, Color.red);
+            patrolling = false;
+            attacking = true;
         }
         else
         {
