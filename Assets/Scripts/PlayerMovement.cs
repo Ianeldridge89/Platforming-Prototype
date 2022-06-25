@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float playerMass;
     public static bool facingRight;
     [SerializeField] public float speed;
+    [SerializeField] public float defaultJumpSpeed;
     [SerializeField] public float jumpSpeed;
     [SerializeField] public float fallMultiplier;
     [SerializeField] public float lowJumpMultiplier;
@@ -43,7 +44,8 @@ public class PlayerMovement : MonoBehaviour
         playerBody.mass = 2;
         facingRight = true;
         speed = 8.5f;
-        jumpSpeed = 10.0f;
+        defaultJumpSpeed = 12.0f;
+        jumpSpeed = defaultJumpSpeed;
         fallMultiplier = 2.5f;
         lowJumpMultiplier = 8.0f;
         
@@ -100,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             hitWall = false;
-            jumpSpeed = 10.0f;
+            jumpSpeed = defaultJumpSpeed;
         }
     }
 
