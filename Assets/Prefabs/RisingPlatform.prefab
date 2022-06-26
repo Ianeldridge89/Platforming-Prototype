@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2103014137396315933
+--- !u!1 &1455838946665791413
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2103014137396315934}
-  - component: {fileID: 2103014137396315935}
-  - component: {fileID: 2103014137396315932}
-  - component: {fileID: 2103014137396315929}
+  - component: {fileID: 1455838946665791414}
+  - component: {fileID: 1455838946665791415}
+  - component: {fileID: 1455838946665791409}
+  - component: {fileID: 1904313130296785653}
   m_Layer: 3
-  m_Name: FallingPlatform
-  m_TagString: FallingPlatform
+  m_Name: RisingPlatform
+  m_TagString: RisingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2103014137396315934
+--- !u!4 &1455838946665791414
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103014137396315933}
+  m_GameObject: {fileID: 1455838946665791413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.3294, y: -35.6, z: 0}
+  m_LocalPosition: {x: -25, y: -35.8, z: 0}
   m_LocalScale: {x: 5.8024497, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2103014137396315935
+--- !u!212 &1455838946665791415
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103014137396315933}
+  m_GameObject: {fileID: 1455838946665791413}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,38 +85,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2103014137396315932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103014137396315933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640af388114666440b3d0f5c55090d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPosition: {x: 0, y: 0}
-  spawnXPosition: 0
-  spawnYPosition: 0
-  position: {x: 0, y: 0}
-  xPosition: 0
-  yPosition: 0
-  fallDistance: 0
-  isActive: 0
-  movementSpeed: 0
-  activateTime: 0
-  activateLength: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  sprite: {fileID: 0}
---- !u!61 &2103014137396315929
+--- !u!61 &1455838946665791409
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103014137396315933}
+  m_GameObject: {fileID: 1455838946665791413}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -136,3 +111,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1904313130296785653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455838946665791413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8dba43876d2864ab60ea140f183640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

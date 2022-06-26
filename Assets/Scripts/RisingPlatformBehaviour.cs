@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingPlatformBehaviour : MonoBehaviour
+public class RisingPlatformBehaviour : MonoBehaviour
 {
     [Header("SpawnPosition")]
     public Vector2 spawnPosition;
@@ -49,18 +49,18 @@ public class FallingPlatformBehaviour : MonoBehaviour
             }
             else if (Time.time > (activateTime + (activateLength / 2)))
             {
-                sprite.color = Color.red;
+                sprite.color = Color.green;
             }
             else
             {
-                sprite.color = Color.green;
+                sprite.color = Color.red;
             }
         }
     }
 
     void DropPlatform()
     {
-        transform.Translate(Vector2.down * movementSpeed * Time.deltaTime);
+        transform.Translate(Vector2.up * movementSpeed * Time.deltaTime);
         BoundaryChecker();
     }
 
@@ -79,7 +79,7 @@ public class FallingPlatformBehaviour : MonoBehaviour
 
     void BoundaryChecker()
     {
-        if (yPosition <= (spawnYPosition - fallDistance))
+        if (yPosition >= (spawnYPosition + fallDistance))
         {
             isActive = false;
             transform.position = spawnPosition;
@@ -87,18 +87,6 @@ public class FallingPlatformBehaviour : MonoBehaviour
             sprite.color = Color.white;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
