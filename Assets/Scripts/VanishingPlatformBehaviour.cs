@@ -61,8 +61,9 @@ public class VanishingPlatformBehaviour : MonoBehaviour
 
     void MovePlatform()
     {
+        
         transform.position = new Vector2(100, -100);
-        if (Time.time > activateTime + 2)
+        if (Time.time > activateTime + 4)
         {
             isActive = false;
             transform.position = spawnPosition;
