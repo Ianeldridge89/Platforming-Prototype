@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
 
     [Header("Abilities")]
+    public bool hasDoubleJump;
     public bool doubleJumpAvailable;
     public float dashSpeed;
     public bool dashIsAvailable;
@@ -163,8 +164,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void DoubleJump()
     {
-        playerBody.velocity = Vector2.up * jumpSpeed;
-        doubleJumpAvailable = false;
+        if (hasDoubleJump)
+        {
+            playerBody.velocity = Vector2.up * jumpSpeed;
+            doubleJumpAvailable = false;
+        }
+
     }
 
 

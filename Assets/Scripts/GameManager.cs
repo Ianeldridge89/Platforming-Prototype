@@ -5,35 +5,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public int spawnPoint;
     // current scene
     public int currentScene;
+    public double spawnTime;
+    
     // collisions for moving to different scenes
     // coin information stored in a list 
-    public Vector2 coinPos0;
-    public Vector2 coinPos1;
-    public Vector2 coinPos2;
-    public Vector2 coinPos3;
-    public Vector2 coinPos4;
     // list to store different spawn points
-    public static List<Vector2> spawnPositions;
-    public Vector2 spawnPos0;
-    public Vector2 spawnPos1;
-    public Vector2 spawnPos2;
-    public Vector2 spawnPos3;
-    public Vector2 spawnPos4;
-    public Vector2 spawnPos5;
-    public Vector2 spawnPos6;
-
     // list to store different scene
-    public static List<int> scenes;
-    public int scene0;
-    public int scene1;
-    public int scene2;
-    public int scene3;
 
     // Start is called before the first frame update
     private void Awake()
@@ -46,12 +30,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         LoadData();
+        spawnPoint = 1;
+        currentScene = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
 
@@ -60,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         public int playerSpawn;
         public int currentScene;
+        public double spawnTime;
     }
 
     public void SaveData()
@@ -67,10 +54,12 @@ public class GameManager : MonoBehaviour
         PlayerData data = new PlayerData();
         data.playerSpawn = spawnPoint;
         data.currentScene = currentScene;
+        data.spawnTime = Time.time;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
 
+        Debug.Log("Game Saved: " + json);
     }
 
     public void LoadData()
@@ -81,26 +70,14 @@ public class GameManager : MonoBehaviour
             string json = File.ReadAllText(path);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
-            currentScene = data.currentScene;
             spawnPoint = data.playerSpawn;
-            
+            currentScene = data.currentScene;
+            spawnTime = data.spawnTime;
+            Debug.Log("Game Loaded: " + json);
         }
     }
 
-
-
-    public void Scene1Initialisation()
-    {
-
-    }
-
-
-    public void Scene2Initialisation()
-    {
-
-    }
-
-    public void Scene3Initialisation()
+    public void Menu()
     {
 
     }
