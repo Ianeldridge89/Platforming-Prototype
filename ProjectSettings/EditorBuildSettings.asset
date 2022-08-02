@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Start/Title Screen.unity
+    guid: 25f05d453ed3b394a8a31877cd7ec652
+  - enabled: 1
+    path: Assets/Scenes/Start/Main Menu.unity
+    guid: 7b496bdc8ed25724191d856df1457e52
+  - enabled: 1
+    path: Assets/Scenes/Start/Leaderboard.unity
+    guid: 672758444efd3b44e8d61cb9e487b4b8
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreens/Level1Loading.unity
+    guid: d316cf98bf65dd2478150379cb574c01
+  - enabled: 1
     path: Assets/Scenes/Levels/Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreens/Level2Loading.unity
+    guid: 532e575f33d487a4abe4e7f50664ac0f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 2.unity
+    guid: fccea2f4e0025d241b295f575dc43088
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreens/Level3Loading.unity
+    guid: f3cb1deef0036c5449b8646d0a7548d9
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 3.unity
+    guid: 4bffc21d7cb3d2046a823caa6aabe260
+  - enabled: 1
+    path: Assets/Scenes/Start/Credits.unity
+    guid: 87d05b9361a64d447b218d0cbcf9a463
   m_configObjects: {}

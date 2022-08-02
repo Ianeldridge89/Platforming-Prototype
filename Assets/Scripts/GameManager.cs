@@ -81,4 +81,23 @@ public class GameManager : MonoBehaviour
     {
 
     }
+/*
+     * Title Screen
+     * Main Menu
+     * Leaderboard
+     * LevellLoading
+     * Level 1
+     * Level 2 Loading
+     * Level 2
+     * Level 3 Loading
+     * Level 3
+     * Credits
+*/
+
+    public void startGame()
+    {
+
+    }
+
+
 }
