@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class Level1LoadingScript : MonoBehaviour
+public class Level2LoadingScript : MonoBehaviour
 {
     public float startTime;
 
@@ -26,8 +25,9 @@ public class Level1LoadingScript : MonoBehaviour
 
     private void StartGame()
     {
-        Debug.Log("Level 1 Loaded");
-        SceneManager.LoadScene("Assets/Scenes/Levels/Level 1.unity");
+        
+        Debug.Log("Level 2 Loaded");
+        SceneManager.LoadScene("Assets/Scenes/Levels/Level 2.unity");
     }
 
 }
