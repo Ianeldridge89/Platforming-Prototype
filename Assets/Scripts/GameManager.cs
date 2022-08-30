@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     // current scene
     public int currentScene;
     public double spawnTime;
-    
+    public int playerScore;
+
     // collisions for moving to different scenes
     // coin information stored in a list 
     // list to store different spawn points
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         LoadData();
         spawnPoint = 1;
         currentScene = 1;
+
     }
 
     // Update is called once per frame
@@ -75,6 +77,12 @@ public class GameManager : MonoBehaviour
             spawnTime = data.spawnTime;
             Debug.Log("Game Loaded: " + json);
         }
+    }
+
+    public void coinCollected()
+    {
+        //score increases by 1. playerScore
+        //
     }
 
     public void Menu()

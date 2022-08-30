@@ -6,7 +6,19 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public float smoothSpeed = 0.125f;
-    public Vector3 offset = new Vector3(0, 5, -50);
+    public float offsetX;
+    public float offsetY;
+    public float offsetZ;
+    public Vector3 offset;
+
+    public void Start()
+    {
+        offsetX = 0;
+        offsetY = 5;
+        offsetZ = -50;
+        offset = new Vector3(offsetX, offsetY, offsetZ);
+    }
+
 
     private void FixedUpdate()
     {

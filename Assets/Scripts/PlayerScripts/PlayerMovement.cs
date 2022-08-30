@@ -53,8 +53,9 @@ public class PlayerMovement : MonoBehaviour
         jumpSpeed = defaultJumpSpeed;
         fallMultiplier = 2.5f;
         lowJumpMultiplier = 8.0f;
-        
+
         //Abilities
+        hasDoubleJump = true;
         doubleJumpAvailable = true;
         dashSpeed = 20.0f;
 
