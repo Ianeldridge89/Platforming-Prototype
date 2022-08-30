@@ -8837,11 +8837,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d44a0149ca5f094bb0e19f4a8151012, type: 3}
---- !u!4 &482451413 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8886805617831055530, guid: ab470c7a7d2c4b24390ce8987f43b3e8, type: 3}
-  m_PrefabInstance: {fileID: 8886805618154114943}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &483696347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9370,9 +9365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d553f5a6cfb9db34fb0be634916517eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 482451413}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 5, z: -50}
+  player: {fileID: 652431758}
+  positionZ: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
