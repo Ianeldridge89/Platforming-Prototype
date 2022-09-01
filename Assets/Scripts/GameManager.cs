@@ -9,11 +9,11 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int spawnPoint;
+    public static int spawnPoint;
     // current scene
-    public int currentScene;
-    public double spawnTime;
-    public int playerScore;
+    public static int currentScene;
+    public static double spawnTime;
+    public static int playerScore;
 
     // collisions for moving to different scenes
     // coin information stored in a list 
@@ -33,15 +33,28 @@ public class GameManager : MonoBehaviour
         LoadData();
         spawnPoint = 1;
         currentScene = 1;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //check to see if scenenumber works
     }
 
+    void SceneChange(int sceneNumber)
+    {
+        if (currentScene != sceneNumber)
+        {
+            currentScene = sceneNumber;
+            if (currentScene == 1)
+            {
+                PlayerMovement.MovePlayer(74, 224);
+            }
+
+        }
+    }
+
+    
 
     [System.Serializable]
     class PlayerData
@@ -89,6 +102,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
 /*
      * Title Screen
      * Main Menu

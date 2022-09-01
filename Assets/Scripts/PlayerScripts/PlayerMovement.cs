@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
-    public Rigidbody2D playerBody;
+    public GameObject player;
+    public static Rigidbody2D playerBody;
     public BoxCollider2D playerCollider;
     [SerializeField] public LayerMask platformLayerMask;
 
@@ -98,12 +99,7 @@ public class PlayerMovement : MonoBehaviour
         bool hitObstacle = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.right * castDirection, 0.1f, platformLayerMask);
         if (hitObstacle)
         {
-            //Debug.Log("hit wall");
             hitWall = true;
-            movement = 0;
-            playerBody.AddForce(Vector2.down * 7);
-            jumpSpeed = 0;
-            
         }
         else
         {
@@ -112,6 +108,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+    public static void MovePlayer(float xPosition, float yPosition)
+    {
+        Debug.Log("method reached");
+        playerBody.position = new Vector2(xPosition, yPosition);
+    }
 
     public bool WallCheck()
     {

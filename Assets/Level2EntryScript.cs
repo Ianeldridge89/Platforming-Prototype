@@ -7,6 +7,7 @@ public class Level2EntryScript : MonoBehaviour
 {
     public BoxCollider2D entryCollider;
     public bool entered;
+    public int sceneNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class Level2EntryScript : MonoBehaviour
     public void EntryBehaviour()
     {
         SceneManager.LoadScene("Assets/Scenes/LoadingScreens/Level2Loading.unity");
-
+        GameManager.currentScene = 2;
 
     }
 }
