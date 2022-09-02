@@ -5,17 +5,23 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
+    public float positionX;
+    public float positionY;
     public float positionZ;
 
     private void Start()
     {
-        positionZ = transform.position.z;
+        positionX = player.transform.position.x;
+        positionY = player.transform.position.y;
+        positionZ = player.transform.position.z - 1;
     }
 
     void Update()
     {
-
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, positionZ);
+        positionX = player.transform.position.x;
+        positionY = player.transform.position.y;
+        positionZ = player.transform.position.z - 1;
+        transform.position = new Vector3(positionX, positionY, positionZ);
     }
 
 

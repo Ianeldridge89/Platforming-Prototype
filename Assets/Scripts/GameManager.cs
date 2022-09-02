@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
             currentScene = sceneNumber;
             if (currentScene == 1)
             {
-                PlayerMovement.MovePlayer(74, 224);
+                //add this back in later its only out for TESTING
+                //just uncomment it
+                //oh and add the spawn positions for the other scenes;
+                //PlayerMovement.MovePlayer(74, 224);
             }
 
         }
