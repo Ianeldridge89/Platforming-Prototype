@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
-public class MainMenuScript : MonoBehaviour
+public class Level3LoadingScript : MonoBehaviour
 {
-    public bool AButtonPressed;
+    public float startTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
 
     }
 
@@ -23,11 +23,10 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    private void StartGame()
     {
-        Debug.Log("Main Menu Method Loaded");
-        SceneManager.LoadScene("Assets/Scenes/LoadingScreens/Level0");
+        Debug.Log("Level 3 Loaded");
+        SceneManager.LoadScene("Assets/Scenes/Levels/Level 3.unity");
     }
-
 
 }

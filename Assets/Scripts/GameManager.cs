@@ -43,18 +43,23 @@ public class GameManager : MonoBehaviour
 
     void SceneChange(int sceneNumber)
     {
-        if (currentScene != sceneNumber)
+        currentScene = sceneNumber;
+        if (currentScene == 1)
         {
-            currentScene = sceneNumber;
-            if (currentScene == 1)
-            {
-                //add this back in later its only out for TESTING
-                //just uncomment it
-                //oh and add the spawn positions for the other scenes;
-                //PlayerMovement.MovePlayer(74, 224);
-            }
-
+            //add this back in later its only out for TESTING
+            //just uncomment it
+            //oh and add the spawn positions for the other scenes;
+            Debug.Log("Current Scene is Scene 1");
+            //PlayerMovement.MovePlayer(74, 224);
         }
+        else if (currentScene == 2)
+        {
+            //Debug.Log("Current SCene is Scene 2");
+        }
+        else if (currentScene == 3)
+        {
+            //Debug.Log("Current SCene is Scene 3");
+        }        
     }
 
     
