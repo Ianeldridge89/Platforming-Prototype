@@ -30,7 +30,7 @@ public class Level0EntryScript : MonoBehaviour
 
     public void EntryBehaviour()
     {
-        SceneManager.LoadScene("Assets/Scenes/Levels/Level0.unity");
+        SceneManager.LoadScene("Assets/Scenes/Levels/Level 0.unity");
         GameManager.currentScene = 0;
 
     }

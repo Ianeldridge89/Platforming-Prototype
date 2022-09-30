@@ -15,6 +15,7 @@ TagManager:
   - Switch
   - FallingPlatform
   - RisingPlatform
+  - CountdownTimer
   layers:
   - Default
   - TransparentFX

@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
-public class MainMenuScript : MonoBehaviour
+public class Level0LoadingScript : MonoBehaviour
 {
     public float startTime;
 
@@ -26,8 +25,9 @@ public class MainMenuScript : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("Assets/Scenes/LoadingScreens/Level0Loading.unity");
+        SceneManager.LoadScene("Assets/Scenes/Levels/Level 0.unity");
         Debug.Log("Level 0 Loaded");
     }
 
 }
+

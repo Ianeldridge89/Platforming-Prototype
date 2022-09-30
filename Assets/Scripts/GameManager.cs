@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,14 @@ public class GameManager : MonoBehaviour
     public static double spawnTime;
     public static int playerScore;
 
+    // Sanctuary
+    public static float playerTime;
+    public static bool inSanctuary;
+    public static float currentSanctuaryTime;
+    public static float exitSanctuaryTime;
+    public static float timeRemaining;
+    public static Vector3 respawnPosition; 
+    public TextMeshProUGUI playerTimeRemaining;    
     // collisions for moving to different scenes
     // coin information stored in a list 
     // list to store different spawn points
@@ -33,11 +42,18 @@ public class GameManager : MonoBehaviour
         LoadData();
         spawnPoint = 1;
         currentScene = 1;
+        inSanctuary = false;
+        currentSanctuaryTime = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!inSanctuary)
+        {
+            CountDownTimer();
+        }
+        CountdownText();
         //check to see if scenenumber works
     }
 
@@ -62,7 +78,37 @@ public class GameManager : MonoBehaviour
         }        
     }
 
-    
+    public static void InTheSanctuary(float newTime)
+    {
+        // this is where the new information from thesanctuary is recorded
+        // its recorded because we need to figure out how to do: CountDownTimer.
+        inSanctuary = true;
+        playerTime = newTime;
+    }
+
+    public static void CountDownTimer()
+    {
+        //Debug.Log("the countdown timer in GameManager is vibin'");THIS IS WORKING BABYYEEEE
+        //playerTime lowers until it gets to 0
+        playerTime = (exitSanctuaryTime + currentSanctuaryTime) - Time.time;
+        if (playerTime <= 0)
+        {
+            RespawnPlayer();
+        }
+    }
+
+    public static void RespawnPlayer()
+    {
+        Debug.Log("RespawnPlayer method activated");
+        PlayerMovement.MovePlayer(respawnPosition.x, respawnPosition.y);
+        InTheSanctuary(currentSanctuaryTime);
+    }
+
+    public void CountdownText()
+    {
+        int playerTimeInt = (int) playerTime; 
+        playerTimeRemaining.text = "time left " + playerTimeInt;
+    }
 
     [System.Serializable]
     class PlayerData
@@ -100,7 +146,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void coinCollected()
+    public void CoinCollected()
     {
         //score increases by 1. playerScore
         //
@@ -124,7 +170,7 @@ public class GameManager : MonoBehaviour
      * Credits
 */
 
-    public void startGame()
+    public void StartGame()
     {
 
     }

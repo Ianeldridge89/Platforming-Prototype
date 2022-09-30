@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Start/Leaderboard.unity
     guid: 672758444efd3b44e8d61cb9e487b4b8
   - enabled: 1
+    path: Assets/Scenes/LoadingScreens/Level0Loading.unity
+    guid: ad1fcc645a027134e94a7bbbf2a157ab
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 0.unity
+    guid: 8ad506800c9a36448a0648a9b906e285
+  - enabled: 1
     path: Assets/Scenes/LoadingScreens/Level1Loading.unity
     guid: d316cf98bf65dd2478150379cb574c01
   - enabled: 1
