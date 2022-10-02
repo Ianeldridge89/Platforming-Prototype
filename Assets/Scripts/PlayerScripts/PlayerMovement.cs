@@ -108,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     public static void MovePlayer(float xPosition, float yPosition)
     {
         Debug.Log("method reached");
